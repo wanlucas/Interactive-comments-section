@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { GlobalStorage } from './GlobalContext';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <GlobalStorage>
+      <App />
+    </GlobalStorage>
   </React.StrictMode>,
 );

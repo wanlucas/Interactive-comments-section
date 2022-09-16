@@ -51,4 +51,4 @@ export const user = {
   username: 'juliusomo',
 };
 
-export const id = 5;
+export const id = JSON.parse(localStorage.getItem('currentId')) || 5;

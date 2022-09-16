@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { GlobalStorage } from './GlobalContext';
+import GlobalStorage from './context/GlobalStorage';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

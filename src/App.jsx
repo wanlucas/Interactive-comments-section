@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentBar from './components/CommentBar';
 import Message from './components/Message';
-import { GlobalContext } from './GlobalContext';
+import GlobalContext from './context/globalContext';
 
 function App() {
   const { messages } = React.useContext(GlobalContext);

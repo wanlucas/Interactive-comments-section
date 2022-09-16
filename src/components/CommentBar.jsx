@@ -1,16 +1,16 @@
 import React from 'react';
-import { GlobalContext } from '../GlobalContext';
+import GlobalContext from '../context/globalContext';
 
 function CommentBar() {
   const [comment, setComment] = React.useState('');
-  const { createNewComment } = React.useContext(GlobalContext);
+  const { createComment } = React.useContext(GlobalContext);
 
   const handleChange = ({ target: { value } }) => {
     setComment(value);
   };
 
   const handleSubmit = (event) => {
-    createNewComment(comment);
+    createComment(comment);
     event.preventDefault();
   };
 

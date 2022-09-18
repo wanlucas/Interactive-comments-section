@@ -1,4 +1,6 @@
-import { CREATE_COMMENT, DELETE_COMMENT } from './types';
+import {
+  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT,
+} from './types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -21,6 +23,38 @@ export default (state, action) => {
 
           return arr;
         }, []),
+      };
+
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        messages: state.messages.map((msg) => (
+          msg.id === action.id ? {
+            ...msg,
+            content: action.payload,
+          } : {
+            ...msg,
+            replies: msg.replies.map((rep) => (
+              rep.id === action.id ? {
+                ...rep,
+                content: action.payload,
+              } : rep
+            )),
+          }
+        )),
+      };
+
+    case REPLY_COMMENT:
+      return {
+        ...state,
+        messages: state.messages.map((msg) => (
+          msg.id === action.id
+          || msg.replies.some(({ id }) => id === action.id)
+            ? {
+              ...msg,
+              replies: msg.replies.concat(action.payload),
+            } : msg
+        )),
       };
 
     default: return state;

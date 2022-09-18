@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CREATE_COMMENT } from './types';
+import { CREATE_COMMENT, DELETE_COMMENT } from './types';
 import Context from './globalContext';
 import reducer from './globalReducer';
 import { messages, user, id as initialId } from '../data/initialData';
@@ -36,9 +36,21 @@ export default function GlobalStorage({ children }) {
     }
   };
 
+  const deleteComment = (id) => {
+    try {
+      dispatch({
+        type: DELETE_COMMENT,
+        payload: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const storage = React.useMemo(() => ({
     ...store,
     createComment,
+    deleteComment,
   }));
 
   React.useEffect(() => {

@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import globalContext from '../context/globalContext';
 
 export default function Message({ value }) {
+  const { user, deleteComment } = React.useContext(globalContext);
   const {
-    content, createdAt, score, replies, user: { username, image },
+    content, createdAt, score, replies, user: { username, image }, id,
   } = value;
+  const YOU = user.username === username;
 
   return (
     <li>
       <div className="comment-header">
         <img src={image} alt={username} className="user-image" />
         <span className="user-name">{ username }</span>
+        {YOU && <span>you</span>}
         <p>{createdAt}</p>
       </div>
 
@@ -20,6 +24,16 @@ export default function Message({ value }) {
           <span>{ score }</span>
           <button type="button">down</button>
         </div>
+
+        <div className="action-buttons">
+          {YOU ? (
+            <>
+              <button type="button" onClick={() => deleteComment(id)}>delete</button>
+              <button type="button">edit</button>
+            </>
+          ) : <button type="button">reply</button>}
+        </div>
+
         <p>{content}</p>
       </div>
 
@@ -35,6 +49,7 @@ Message.propTypes = {
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     user: PropTypes.shape({
       username: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,

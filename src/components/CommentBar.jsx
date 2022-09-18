@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../context/globalContext';
 
-function CommentBar({ type, id }) {
+function CommentBar({ type, id, to }) {
   const [comment, setComment] = React.useState('');
   const { createComment, editComment, replyComment } = React.useContext(GlobalContext);
 
@@ -18,7 +18,7 @@ function CommentBar({ type, id }) {
         editComment(id, comment);
         break;
       case 'reply':
-        replyComment(id, comment);
+        replyComment({ id, to }, comment);
         break;
       default: createComment(comment);
     }
@@ -38,10 +38,12 @@ function CommentBar({ type, id }) {
 CommentBar.propTypes = {
   type: PropTypes.string,
   id: PropTypes.number,
+  to: PropTypes.string,
 };
 
 CommentBar.defaultProps = {
-  type: 'create',
+  type: null,
+  to: null,
   id: null,
 };
 

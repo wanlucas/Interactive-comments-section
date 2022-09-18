@@ -53,7 +53,7 @@ export default function GlobalStorage({ children }) {
     id,
   });
 
-  const replyComment = (id, reply) => {
+  const replyComment = (info, reply) => {
     const comment = {
       id: currentId,
       content: reply,
@@ -67,7 +67,7 @@ export default function GlobalStorage({ children }) {
     activate({
       type: REPLY_COMMENT,
       payload: comment,
-      id,
+      info,
     });
   };
 

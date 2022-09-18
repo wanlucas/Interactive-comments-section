@@ -6,7 +6,7 @@ import CommentBar from './CommentBar';
 export default function Message({ value }) {
   const { user, deleteComment } = React.useContext(globalContext);
   const {
-    content, createdAt, score, replies, user: { username, image }, id,
+    content, createdAt, score, replies, user: { username, image }, id, replyingTo,
   } = value;
   const YOU = user.username === username;
 
@@ -49,13 +49,18 @@ export default function Message({ value }) {
         <div className="comment-content">
           {editing
             ? <CommentBar type="edit" id={id} />
-            : <p>{content}</p>}
+            : (
+              <p>
+                <span className="mention">{`@${replyingTo}`}</span>
+                {content}
+              </p>
+            )}
         </div>
       </div>
 
       <ul className="replies">
         {replies && replies.map((replie) => <Message key={replie.id} value={replie} />)}
-        {responding && <CommentBar type="reply" id={id} />}
+        {responding && <CommentBar type="reply" id={id} to={username} />}
       </ul>
     </li>
   );

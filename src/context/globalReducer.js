@@ -48,11 +48,14 @@ export default (state, action) => {
       return {
         ...state,
         messages: state.messages.map((msg) => (
-          msg.id === action.id
-          || msg.replies.some(({ id }) => id === action.id)
+          msg.id === action.info.id
+          || msg.replies.some(({ id }) => id === action.info.id)
             ? {
               ...msg,
-              replies: msg.replies.concat(action.payload),
+              replies: msg.replies.concat({
+                ...action.payload,
+                replyingTo: action.info.to,
+              }),
             } : msg
         )),
       };

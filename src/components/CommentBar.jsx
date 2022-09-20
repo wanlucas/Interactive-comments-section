@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../context/globalContext';
 
-function CommentBar({ type, id, to }) {
+function CommentBar({ type, id, to, modal }) { // eslint-disable-line
   const [comment, setComment] = React.useState('');
   const { createComment, editComment, replyComment } = React.useContext(GlobalContext);
 
@@ -23,12 +23,16 @@ function CommentBar({ type, id, to }) {
       default: createComment(comment);
     }
 
-    setComment('');
+    if (modal) modal(false);
   };
 
   return (
     <form className="comment-bar" onSubmit={handleSubmit}>
-      <input type="textArea" placeholder="Add a comment..." value={comment} onChange={handleChange} />
+      <div className="text-area">
+        <span className="mention">{`@${to}`}</span>
+        <input type="textArea" placeholder="Add a comment..." tabIndex="dfdf" value={comment} onChange={handleChange} />
+      </div>
+
       <img src="" alt="" />
       <input type="button" value="send" />
     </form>
@@ -37,14 +41,16 @@ function CommentBar({ type, id, to }) {
 
 CommentBar.propTypes = {
   type: PropTypes.string,
+  modal: PropTypes.func,
   id: PropTypes.number,
   to: PropTypes.string,
 };
 
 CommentBar.defaultProps = {
   type: null,
-  to: null,
+  modal: null,
   id: null,
+  to: null,
 };
 
 export default CommentBar;

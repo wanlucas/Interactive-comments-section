@@ -48,7 +48,7 @@ export default function Message({ value }) {
 
         <div className="comment-content">
           {editing
-            ? <CommentBar type="edit" id={id} />
+            ? <CommentBar type="edit" id={id} modal={setEditing} />
             : (
               <p>
                 <span className="mention">{`@${replyingTo}`}</span>
@@ -60,7 +60,7 @@ export default function Message({ value }) {
 
       <ul className="replies">
         {replies && replies.map((replie) => <Message key={replie.id} value={replie} />)}
-        {responding && <CommentBar type="reply" id={id} to={username} />}
+        {responding && <CommentBar type="reply" id={id} to={username} modal={setResponding} />}
       </ul>
     </li>
   );
@@ -68,6 +68,7 @@ export default function Message({ value }) {
 
 Message.propTypes = {
   value: PropTypes.shape({
+    replyingTo: PropTypes.string,
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,

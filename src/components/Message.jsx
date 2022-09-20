@@ -4,10 +4,11 @@ import globalContext from '../context/globalContext';
 import CommentBar from './CommentBar';
 
 export default function Message({ value }) {
-  const { user, deleteComment } = React.useContext(globalContext);
   const {
     content, createdAt, score, replies, user: { username, image }, id, replyingTo,
   } = value;
+
+  const { user, deleteComment, addVote } = React.useContext(globalContext);
   const YOU = user.username === username;
 
   const [editing, setEditing] = React.useState(false);
@@ -21,6 +22,10 @@ export default function Message({ value }) {
     setResponding((prev) => !prev);
   };
 
+  const handleVotes = ({ target: { name } }) => {
+    addVote(id, { up: 1, down: -1 }[name]);
+  };
+
   return (
     <li>
       <div className="comment-header">
@@ -32,9 +37,9 @@ export default function Message({ value }) {
 
       <div className="comment">
         <div className="up_down-vote">
-          <button type="button">up</button>
+          <button type="button" name="up" onClick={handleVotes}>up</button>
           <span>{ score }</span>
-          <button type="button">down</button>
+          <button type="button" name="down" onClick={handleVotes}>down</button>
         </div>
 
         <div className="action-buttons">

@@ -4,7 +4,7 @@ import Context from './globalContext';
 import reducer from './globalReducer';
 import { messages, user, id as initialId } from '../data/initialData';
 import {
-  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT,
+  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT, ADD_VOTE,
 } from './types';
 
 export default function GlobalStorage({ children }) {
@@ -71,18 +71,29 @@ export default function GlobalStorage({ children }) {
     });
   };
 
+  const addVote = (commentId, vote) => activate({
+    type: ADD_VOTE,
+    payload: vote,
+    id: commentId,
+  });
+
   const storage = React.useMemo(() => ({
     ...store,
     createComment,
     deleteComment,
     replyComment,
     editComment,
+    addVote,
   }));
 
   React.useEffect(() => {
     localStorage.setItem('messages', JSON.stringify(store.messages));
     localStorage.setItem('currentId', JSON.stringify(currentId));
   }, [store.messages]);
+
+  React.useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(store.user));
+  }, [store.user]);
 
   return <Context.Provider value={storage}>{ children }</Context.Provider>;
 }

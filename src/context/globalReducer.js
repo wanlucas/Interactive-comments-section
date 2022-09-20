@@ -1,5 +1,5 @@
 import {
-  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT,
+  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT, ADD_VOTE,
 } from './types';
 
 export default (state, action) => {
@@ -59,6 +59,28 @@ export default (state, action) => {
             } : msg
         )),
       };
+
+    case ADD_VOTE: {
+      const { id, payload } = action;
+      const { user, messages } = state;
+      const current = user.votes.find((msg) => msg.id === id);
+
+      return {
+        ...state,
+        user: {
+          ...user,
+          votes: current
+            ? user.votes.filter((msg) => msg.id !== id)
+            : user.votes.concat({ id, vote: payload }),
+        },
+        messages: messages.map((msg) => (
+          msg.id === id ? {
+            ...msg,
+            score: current ? msg.score - current.vote : msg.score + payload,
+          } : msg
+        )),
+      };
+    }
 
     default: return state;
   }

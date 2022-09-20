@@ -2,3 +2,4 @@ export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const REPLY_COMMENT = 'REPLY_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const ADD_VOTE = 'ADD_VOTE';

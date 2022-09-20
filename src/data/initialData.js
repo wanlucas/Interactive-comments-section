@@ -46,9 +46,10 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
   },
 ];
 
-export const user = {
+export const user = JSON.parse(localStorage.getItem('user')) || {
   image: './images/avatars/image-juliusomo.png',
   username: 'juliusomo',
+  votes: [],
 };
 
 export const id = JSON.parse(localStorage.getItem('currentId')) || 5;

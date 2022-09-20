@@ -29,7 +29,7 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
   return (
     <form className="comment-bar" onSubmit={handleSubmit}>
       <div className="text-area">
-        <span className="mention">{`@${to}`}</span>
+        { to && <span className="mention">{`@${to}`}</span> }
         <input type="textArea" placeholder="Add a comment..." tabIndex="dfdf" value={comment} onChange={handleChange} />
       </div>
 

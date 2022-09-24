@@ -78,12 +78,23 @@ export default (state, action) => {
             ? user.votes.filter((msg) => msg.id !== id)
             : user.votes.concat({ id, vote: payload }),
         },
-        messages: messages.map((msg) => (
-          msg.id === id ? {
+        messages: messages.map((msg) => {
+          if (msg.id === id) {
+            return {
+              ...msg,
+              score: current ? msg.score - current.vote : msg.score + payload,
+            };
+          }
+
+          return {
             ...msg,
-            score: current ? msg.score - current.vote : msg.score + payload,
-          } : msg
-        )),
+            replies: msg.replies.map((rep) => (
+              rep.id === id ? {
+                ...rep,
+                score: current ? rep.score - current.vote : rep.score + payload,
+              } : rep)),
+          };
+        }),
       };
     }
 

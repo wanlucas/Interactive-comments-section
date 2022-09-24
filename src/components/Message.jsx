@@ -56,7 +56,7 @@ export default function Message({ value }) {
             ? <CommentBar type="edit" id={id} modal={setEditing} />
             : (
               <p>
-                <span className="mention">{`@${replyingTo}`}</span>
+                {replyingTo && <span className="mention">{`@${replyingTo}`}</span>}
                 {content}
               </p>
             )}

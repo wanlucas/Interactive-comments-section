@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Context from './globalContext';
 import reducer from './globalReducer';
-import { messages, user, id as initialId } from '../data/initialData';
+
+import {
+  messages, user, id as initialId, comment as commentShape,
+} from '../data/initialData';
+
 import {
   CREATE_COMMENT,
   DELETE_COMMENT,
@@ -32,11 +36,9 @@ export default function GlobalStorage({ children }) {
 
   const createComment = (text) => {
     const comment = {
-      id: currentId,
+      ...commentShape,
       content: text,
-      createdAt: 'now',
-      score: 0,
-      user,
+      id: currentId,
       replies: [],
     };
 
@@ -61,11 +63,9 @@ export default function GlobalStorage({ children }) {
 
   const replyComment = (info, reply) => {
     const comment = {
+      ...commentShape,
       id: currentId,
       content: reply,
-      createdAt: 'now',
-      score: 0,
-      user,
     };
 
     setCurrentId((prev) => prev + 1);

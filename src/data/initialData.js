@@ -53,3 +53,10 @@ export const user = JSON.parse(localStorage.getItem('user')) || {
 };
 
 export const id = JSON.parse(localStorage.getItem('currentId')) || 5;
+
+export const comment = {
+  content: '',
+  createdAt: 'now',
+  score: 0,
+  user,
+};

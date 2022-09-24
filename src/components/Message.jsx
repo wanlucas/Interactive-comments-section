@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import globalContext from '../context/globalContext';
 import fromNow from '../services/date';
 import CommentBar from './CommentBar';
+import DeleteComment from './DeleteComment';
 
 export default function Message({ value }) {
   const {
@@ -14,6 +15,7 @@ export default function Message({ value }) {
 
   const [editing, setEditing] = React.useState(false);
   const [responding, setResponding] = React.useState(false);
+  const [deleting, setDeleting] = React.useState(false);
 
   const handleEdit = () => {
     setEditing((prev) => !prev);
@@ -46,7 +48,7 @@ export default function Message({ value }) {
         <div className="action-buttons">
           {YOU ? (
             <>
-              <button type="button" onClick={() => deleteComment(id)}>delete</button>
+              <button type="button" onClick={() => setDeleting(true)}>delete</button>
               <button type="button" onClick={handleEdit}>edit</button>
             </>
           ) : <button type="button" onClick={handleReply}>reply</button>}
@@ -68,6 +70,8 @@ export default function Message({ value }) {
         {replies && replies.map((replie) => <Message key={replie.id} value={replie} />)}
         {responding && <CommentBar type="reply" id={id} to={username} modal={setResponding} />}
       </ul>
+
+      {deleting && <DeleteComment del={() => deleteComment(id)} modal={setDeleting} />}
     </li>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import globalContext from '../context/globalContext';
+import fromNow from '../services/date';
 import CommentBar from './CommentBar';
 
 export default function Message({ value }) {
@@ -32,7 +33,7 @@ export default function Message({ value }) {
         <img src={image} alt={username} className="user-image" />
         <span className="user-name">{ username }</span>
         {YOU && <span>you</span>}
-        <p>{createdAt}</p>
+        <p>{fromNow(createdAt)}</p>
       </div>
 
       <div className="comment">

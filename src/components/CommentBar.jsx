@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../context/globalContext';
+import { user } from '../data/initialData';
 
 function CommentBar({ type, id, to, modal }) { // eslint-disable-line
   const [comment, setComment] = React.useState('');
@@ -33,7 +34,7 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
         <input type="textArea" placeholder="Add a comment..." value={comment} onChange={handleChange} />
       </div>
 
-      <img src="" alt="" />
+      <img src={user.image} alt={user.username} />
       <input type="submit" value="send" />
     </form>
   );

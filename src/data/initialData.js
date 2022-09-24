@@ -1,3 +1,7 @@
+import {
+  MaxPic, RamPic, amyPic, juliuPic,
+} from '../images/images';
+
 export const messages = JSON.parse(localStorage.getItem('messages')) || [
   {
     id: 1,
@@ -5,7 +9,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
     createdAt: new Date().getTime(),
     score: 12,
     user: {
-      image: './images/avatars/image-amyrobson.png',
+      image: amyPic,
       username: 'amyrobson',
     },
     replies: [],
@@ -16,7 +20,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
     createdAt: new Date().getTime(),
     score: 5,
     user: {
-      image: './images/avatars/image-maxblagun.png',
+      image: MaxPic,
       username: 'maxblagun',
     },
     replies: [
@@ -27,7 +31,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
         score: 4,
         replyingTo: 'maxblagun',
         user: {
-          image: './images/avatars/image-ramsesmiron.png',
+          image: RamPic,
           username: 'ramsesmiron',
         },
       },
@@ -38,7 +42,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
         score: 4,
         replyingTo: 'ramsesmiron',
         user: {
-          image: './images/avatars/image-juliusomo.png',
+          image: juliuPic,
           username: 'juliusomo',
         },
       },
@@ -47,7 +51,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
 ];
 
 export const user = JSON.parse(localStorage.getItem('user')) || {
-  image: './images/avatars/image-juliusomo.png',
+  image: juliuPic,
   username: 'juliusomo',
   votes: [],
 };

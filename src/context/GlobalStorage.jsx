@@ -4,7 +4,12 @@ import Context from './globalContext';
 import reducer from './globalReducer';
 import { messages, user, id as initialId } from '../data/initialData';
 import {
-  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT, ADD_VOTE,
+  CREATE_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
+  REPLY_COMMENT,
+  UPDATE_ORDER,
+  ADD_VOTE,
 } from './types';
 
 export default function GlobalStorage({ children }) {
@@ -19,6 +24,7 @@ export default function GlobalStorage({ children }) {
   const activate = (action) => {
     try {
       dispatch(action);
+      console.log(action);
     } catch (error) {
       console.log(error);
     }
@@ -77,6 +83,10 @@ export default function GlobalStorage({ children }) {
     id: commentId,
   });
 
+  const updateOrder = () => activate({
+    type: UPDATE_ORDER,
+  });
+
   const storage = React.useMemo(() => ({
     ...store,
     createComment,
@@ -94,6 +104,10 @@ export default function GlobalStorage({ children }) {
   React.useEffect(() => {
     localStorage.setItem('user', JSON.stringify(store.user));
   }, [store.user]);
+
+  React.useEffect(() => {
+    updateOrder();
+  }, [store.user.votes]);
 
   return <Context.Provider value={storage}>{ children }</Context.Provider>;
 }

@@ -35,7 +35,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
         id: 4,
         content: "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
         createdAt: '2 days ago',
-        score: 2,
+        score: 4,
         replyingTo: 'ramsesmiron',
         user: {
           image: './images/avatars/image-juliusomo.png',

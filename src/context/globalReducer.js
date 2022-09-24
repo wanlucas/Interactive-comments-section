@@ -1,5 +1,10 @@
 import {
-  CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, REPLY_COMMENT, ADD_VOTE,
+  CREATE_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
+  REPLY_COMMENT,
+  UPDATE_ORDER,
+  ADD_VOTE,
 } from './types';
 
 export default (state, action) => {
@@ -81,6 +86,20 @@ export default (state, action) => {
         )),
       };
     }
+
+    case UPDATE_ORDER:
+      return {
+        ...state,
+        messages: state.messages.sort((a, b) => b.score - a.score)
+          .reduce((arr, cur) => [
+            ...arr,
+            cur.replies
+              ? {
+                ...cur,
+                replies: cur.replies.sort((a, b) => b.score - a.score),
+              } : cur,
+          ], []),
+      };
 
     default: return state;
   }

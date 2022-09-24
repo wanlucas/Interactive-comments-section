@@ -9,7 +9,7 @@ export default function Message({ value }) {
   const {
     content, createdAt, score, replies, user: { username, image }, id, replyingTo,
   } = value;
-
+  console.log(createdAt);
   const { user, deleteComment, addVote } = React.useContext(globalContext);
   const YOU = user.username === username;
 
@@ -80,7 +80,7 @@ Message.propTypes = {
   value: PropTypes.shape({
     replyingTo: PropTypes.string,
     content: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
+    createdAt: PropTypes.number.isRequired,
     score: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     user: PropTypes.shape({

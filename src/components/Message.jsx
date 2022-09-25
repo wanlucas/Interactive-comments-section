@@ -16,6 +16,7 @@ export default function Message({ value }) {
   } = value;
 
   const { user, deleteComment, addVote } = React.useContext(globalContext);
+  const { vote } = user.votes.find((v) => v.id === id) || { vote: null };
   const YOU = user.username === username;
 
   const [editing, setEditing] = React.useState(false);
@@ -30,10 +31,6 @@ export default function Message({ value }) {
     setResponding((prev) => !prev);
   };
 
-  const handleVotes = ({ target: { name } }) => {
-    addVote(id, { up: 1, down: -1 }[name] || 0);
-  };
-
   return (
     <li>
       <div className="comment">
@@ -45,12 +42,22 @@ export default function Message({ value }) {
         </div>
 
         <div className="up_down-vote">
-          <button type="button" name="up" onClick={handleVotes}>
+          <button
+            type="button"
+            name="up"
+            className={vote === 1 ? 'active' : ''}
+            onClick={() => addVote(id, 1)}
+          >
             <img src={plus} alt="minus" />
           </button>
           <span>{ score }</span>
-          <button type="button" name="down" onClick={handleVotes}>
-            <img src={minus} alt="minus" />
+          <button
+            type="button"
+            name="down"
+            className={vote === -1 ? 'active' : ''}
+            onClick={() => addVote(id, -1)}
+          >
+            <img src={minus} style={{ marginBottom: '3px' }} alt="minus" />
           </button>
         </div>
 

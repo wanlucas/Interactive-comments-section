@@ -1,7 +1,5 @@
 .comment {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 4fr 1fr;
   grid-template: 'h h h' 't t t' 'v a a';
   background-color: white;
   margin: 13px 0;
@@ -46,7 +44,14 @@
   width: 90px;
   height: 35px;
   border-radius: 5px;
+  color: hsl(240, 49%, 63%);
+  font-weight: bold;
   background-color: hsl(228, 33%, 97%);
+}
+
+.active {
+  filter: brightness(0.6);
+  transform: scale(1.1);
 }
 
 .up_down-vote button {
@@ -75,6 +80,7 @@
 
 .comment-text {
   grid-area: t;
+  width: 80%;
   margin: 10px 0;
 }
 
@@ -84,9 +90,16 @@
   font-weight: bold;
 }
 
-@media only screen and (min-width: 600px) {
+.replies {
+  margin-left: 5%;
+  padding-left: 5%;
+  box-shadow: -2px 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 800px) {
   .comment {
-    grid-template: 'v h a ' 'v t t' 'v t t';
+    grid-template-columns: 50px 4fr 1fr;
+    grid-template-areas: 'v h a' 'v t t' 'v t t';
   }
 
   .up_down-vote {
@@ -95,4 +108,4 @@
     height: 90px;
     margin-right: 20px;
   }
-}
+} 

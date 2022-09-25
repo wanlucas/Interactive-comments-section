@@ -5,6 +5,7 @@
   margin: 13px 0;
   padding: 10px 20px;
   border-radius: 8px;
+  font-size: 12px;
   animation: fade 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
@@ -116,8 +117,8 @@
 
   .up_down-vote {
     flex-direction: column;
-    width: 35px;
-    height: 90px;
+    width: 28px;
+    height: 80px;
     margin-right: 20px;
   }
 } 

@@ -1,0 +1,41 @@
+.add-comment {
+  width: 100%;
+}
+
+.comment-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.comment-bar img {
+  width: 37px;
+  height: 37px;
+}
+
+.comment-bar .text-bar {
+  height: 60px;
+  width: 90%;
+  border-radius: 7px;
+  padding: 0 20px;
+  padding-bottom: 2%;
+  border: 1px solid rgb(95, 94, 128);
+  margin: 0 10px;
+  outline: none;
+}
+
+.comment-bar .text-bar:focus {
+  border: 1px solid rgb(52, 50, 90);
+}
+
+.send-btn {
+  border-radius: 7px;
+  color: white;
+  background-color: rgb(83, 82, 188);
+  border: none;
+  width: 80px;
+  height: 35px;
+}

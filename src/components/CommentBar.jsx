@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../context/globalContext';
 import { user } from '../data/initialData';
+import './CommentBar.css';
 
 function CommentBar({ type, id, to, modal }) { // eslint-disable-line
   const [comment, setComment] = React.useState('');
@@ -9,6 +10,12 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
 
   const handleChange = ({ target: { value } }) => {
     setComment(value);
+  };
+
+  const buttons = {
+    edit: 'Update',
+    create: 'Send',
+    reply: 'Reply',
   };
 
   const handleSubmit = (event) => {
@@ -30,13 +37,9 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
 
   return (
     <form className="comment-bar" onSubmit={handleSubmit}>
-      <div className="text-area">
-        { to && <span className="mention">{`@${to}`}</span> }
-        <input type="textArea" placeholder="Add a comment..." value={comment} onChange={handleChange} />
-      </div>
-
-      <img src={user.image} alt={user.username} />
-      <input type="submit" value="send" />
+      { type !== 'edit' && <img src={user.image} alt={user.username} /> }
+      <input type="textArea" className="text-bar" placeholder="Add a comment..." value={comment} onChange={handleChange} />
+      <input type="submit" className="send-btn" value={buttons[type]} />
     </form>
   );
 }

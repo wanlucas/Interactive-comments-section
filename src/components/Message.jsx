@@ -4,12 +4,17 @@ import globalContext from '../context/globalContext';
 import fromNow from '../services/date';
 import CommentBar from './CommentBar';
 import DeleteComment from './DeleteComment';
+import './Message.css';
+
+import {
+  delete as deleteImg, edit, plus, minus, reply,
+} from '../images/images';
 
 export default function Message({ value }) {
   const {
     content, createdAt, score, replies, user: { username, image }, id, replyingTo,
   } = value;
-  console.log(createdAt);
+
   const { user, deleteComment, addVote } = React.useContext(globalContext);
   const YOU = user.username === username;
 
@@ -31,30 +36,43 @@ export default function Message({ value }) {
 
   return (
     <li>
-      <div className="comment-header">
-        <img src={image} alt={username} className="user-image" />
-        <span className="user-name">{ username }</span>
-        {YOU && <span>you</span>}
-        <p>{fromNow(createdAt)}</p>
-      </div>
-
       <div className="comment">
+        <div className="comment-header">
+          <img src={image} alt={username} className="user-image" />
+          <span className="user-name">{ username }</span>
+          {YOU && <span className="you">you</span>}
+          <p>{fromNow(createdAt)}</p>
+        </div>
+
         <div className="up_down-vote">
-          <button type="button" name="up" onClick={handleVotes}>up</button>
+          <button type="button" name="up" onClick={handleVotes}>
+            <img src={plus} alt="minus" />
+          </button>
           <span>{ score }</span>
-          <button type="button" name="down" onClick={handleVotes}>down</button>
+          <button type="button" name="down" onClick={handleVotes}>
+            <img src={minus} alt="minus" />
+          </button>
         </div>
 
         <div className="action-buttons">
           {YOU ? (
             <>
-              <button type="button" onClick={() => setDeleting(true)}>delete</button>
-              <button type="button" onClick={handleEdit}>edit</button>
+              <button type="button" onClick={() => setDeleting(true)}>
+                <img src={deleteImg} alt="trash" />
+              </button>
+
+              <button type="button" onClick={handleEdit}>
+                <img src={edit} alt="pen" />
+              </button>
             </>
-          ) : <button type="button" onClick={handleReply}>reply</button>}
+          ) : (
+            <button type="button" onClick={handleReply}>
+              <img src={reply} alt="reply" />
+            </button>
+          )}
         </div>
 
-        <div className="comment-content">
+        <div className="comment-text">
           {editing
             ? <CommentBar type="edit" id={id} modal={setEditing} />
             : (

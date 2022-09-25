@@ -2,3 +2,8 @@ export { default as amyPic } from './avatars/image-amyrobson.png';
 export { default as juliuPic } from './avatars/image-juliusomo.png';
 export { default as MaxPic } from './avatars/image-maxblagun.png';
 export { default as RamPic } from './avatars/image-ramsesmiron.png';
+export { default as minus } from './icons/icon-minus.svg';
+export { default as plus } from './icons/icon-plus.svg';
+export { default as edit } from './icons/icon-edit.svg';
+export { default as reply } from './icons/icon-reply.svg';
+export { default as delete } from './icons/icon-delete.svg';

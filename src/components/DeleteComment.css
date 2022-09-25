@@ -1,0 +1,50 @@
+.delete-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.delete_message-modal {
+  width: 330px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.delete_message-modal h3 {
+  font-size: 1.4rem;
+  color: rgb(54, 54, 54);
+}
+
+.delete_message-modal p {
+  margin: 15px 0;
+}
+
+.delete_message-modal div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.delete_message-modal button {
+  width: 47%;
+  height: 38px;
+  border-radius: 6px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.cancel-btn {
+  background: rgb(105, 113, 123);
+}
+
+.del-btn {
+  background: rgb(238, 99, 104);
+}

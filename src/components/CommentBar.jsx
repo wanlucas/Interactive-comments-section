@@ -38,7 +38,7 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
   return (
     <form className="comment-bar" onSubmit={handleSubmit}>
       { type !== 'edit' && <img src={user.image} alt={user.username} /> }
-      <input type="textArea" className="text-bar" placeholder="Add a comment..." value={comment} onChange={handleChange} />
+      <input type="text" className="text-bar" placeholder="Add a comment..." value={comment} onChange={handleChange} />
       <input type="submit" className="send-btn" value={buttons[type]} />
     </form>
   );

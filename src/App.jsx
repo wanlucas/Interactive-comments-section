@@ -10,10 +10,13 @@ function App() {
   return (
     <div className="App">
       <main>
+        <h1>Comments</h1>
+
         <ul className="messages">
           {messages.map((message) => <Message key={message.id} value={message} />)}
         </ul>
         <section className="add-comment">
+          <h2>New comment</h2>
           <CommentBar type="create" />
         </section>
       </main>

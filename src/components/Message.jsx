@@ -76,7 +76,7 @@ export default function Message({ value }) {
             </>
           ) : (
             <button type="button" onClick={handleReply}>
-              <img src={reply} alt="reply" />
+              <img src={reply} alt="reply icon" />
               <span>Reply</span>
             </button>
           )}

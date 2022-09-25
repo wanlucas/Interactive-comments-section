@@ -49,6 +49,11 @@ p {
   overflow: hidden;
 }
 
+.App h1, .App h2 {
+  line-height: 0;
+  opacity: 0;
+}
+
 main {
   height: 94vh;
   width: 100%;

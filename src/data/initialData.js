@@ -50,7 +50,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
   },
   {
     id: 5,
-    content: 'Life hurts.',
+    content: 'Love hurts.',
     createdAt: new Date().getTime(),
     score: 3,
     user: {

@@ -10,6 +10,21 @@ button {
   background: none;
 }
 
+button:hover, input[type="submit"]:hover {
+  transform: scale(1.1);
+  filter: brightness(0.9);
+}
+
+button:active, input[type="submit"]:active {
+  transform: scale(0.9);
+  filter: brightness(1.1);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+
 li {
   list-style: none;
 }

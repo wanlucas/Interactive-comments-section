@@ -26,7 +26,7 @@ function App() {
           </p>
           <p>
             Coded by
-            <a href="#https://github.com/wanlucas">Wan Lucas</a>
+            <a href="https://github.com/wanlucas">Wan Lucas</a>
             .
           </p>
         </div>

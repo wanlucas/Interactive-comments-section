@@ -31,7 +31,7 @@ export default function Message({ value }) {
   };
 
   const handleVotes = ({ target: { name } }) => {
-    addVote(id, { up: 1, down: -1 }[name]);
+    addVote(id, { up: 1, down: -1 }[name] || 0);
   };
 
   return (
@@ -59,15 +59,18 @@ export default function Message({ value }) {
             <>
               <button type="button" onClick={() => setDeleting(true)}>
                 <img src={deleteImg} alt="trash" />
+                <span className="delete-btn">Delete</span>
               </button>
 
               <button type="button" onClick={handleEdit}>
                 <img src={edit} alt="pen" />
+                <span>Edit</span>
               </button>
             </>
           ) : (
             <button type="button" onClick={handleReply}>
               <img src={reply} alt="reply" />
+              <span>Reply</span>
             </button>
           )}
         </div>

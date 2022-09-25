@@ -25,6 +25,7 @@ function CommentBar({ type, id, to, modal }) { // eslint-disable-line
     }
 
     if (modal) modal(false);
+    else setComment('');
   };
 
   return (

@@ -1,0 +1,38 @@
+.comment {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template: 'h h h' 't t t' 'v a a';
+  background-color: white;
+  padding: 10px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  grid-area: h;
+}
+
+.up_down-vote {
+  display: flex;
+  align-items: center;
+  grid-area: v;
+}
+
+.action-buttons {
+  grid-area: a;
+}
+
+.comment-text {
+  grid-area: t;
+}
+
+@media only screen and (min-width: 600px) {
+  .comment {
+    grid-template: 'v h a ' 'v t t' 'v t t';
+  }
+
+  .up_down-vote {
+    flex-direction: column;
+  }
+}

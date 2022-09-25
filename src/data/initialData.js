@@ -18,7 +18,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
     id: 2,
     content: "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
     createdAt: new Date().getTime(),
-    score: 5,
+    score: 12,
     user: {
       image: MaxPic,
       username: 'maxblagun',
@@ -39,7 +39,7 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
         id: 4,
         content: "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
         createdAt: new Date().getTime(),
-        score: 4,
+        score: 3,
         replyingTo: 'ramsesmiron',
         user: {
           image: juliuPic,
@@ -47,6 +47,17 @@ export const messages = JSON.parse(localStorage.getItem('messages')) || [
         },
       },
     ],
+  },
+  {
+    id: 5,
+    content: 'Life hurts.',
+    createdAt: new Date().getTime(),
+    score: 3,
+    user: {
+      image: 'https://avatars.githubusercontent.com/u/76530841?v=4',
+      username: 'wanlucas',
+    },
+    replies: [],
   },
 ];
 
@@ -56,7 +67,7 @@ export const user = JSON.parse(localStorage.getItem('user')) || {
   votes: [],
 };
 
-export const id = JSON.parse(localStorage.getItem('currentId')) || 5;
+export const id = JSON.parse(localStorage.getItem('currentId')) || 6;
 
 export const comment = {
   content: '',

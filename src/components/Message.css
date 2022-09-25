@@ -19,6 +19,7 @@
 
 .comment-header img {
   width: 30px;
+  border-radius: 50%;
 }
 
 .comment-header .user-name {
@@ -91,8 +92,8 @@
 }
 
 .replies {
-  margin-left: 5%;
-  padding-left: 5%;
+  margin-left: 38px;
+  padding-left: 38px;
   box-shadow: -2px 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 

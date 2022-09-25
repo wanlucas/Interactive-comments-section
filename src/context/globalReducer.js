@@ -101,15 +101,7 @@ export default (state, action) => {
     case UPDATE_ORDER:
       return {
         ...state,
-        messages: state.messages.sort((a, b) => b.score - a.score)
-          .reduce((arr, cur) => [
-            ...arr,
-            cur.replies
-              ? {
-                ...cur,
-                replies: cur.replies.sort((a, b) => b.score - a.score),
-              } : cur,
-          ], []),
+        messages: state.messages.sort((a, b) => b.score - a.score),
       };
 
     default: return state;

@@ -96,9 +96,9 @@ export default function Message({ value }) {
 
       <ul className="replies">
         {replies && replies.map((replie) => <Message key={replie.id} value={replie} />)}
-        {responding && <CommentBar type="reply" id={id} to={username} modal={setResponding} />}
       </ul>
 
+      {responding && <CommentBar type="reply" id={id} to={username} modal={setResponding} />}
       {deleting && <DeleteComment del={() => deleteComment(id)} modal={setDeleting} />}
     </li>
   );

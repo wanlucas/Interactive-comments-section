@@ -88,12 +88,12 @@
 }
 
 .delete-btn {
-  color: rgb(209, 62, 62);
+  color: rgb(220, 79, 79);
 }
 
 .comment-text {
   grid-area: t;
-  width: 80%;
+  width: 100%;
   margin: 10px 0;
 }
 
@@ -109,7 +109,7 @@
   box-shadow: -2px 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 900px) {
   .comment {
     grid-template-columns: 50px 4fr 1fr;
     grid-template-areas: 'v h a' 'v t t' 'v t t';

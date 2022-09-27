@@ -12,7 +12,6 @@ button {
 
 button:hover, input[type="submit"]:hover {
   transform: scale(1.1);
-  filter: brightness(0.9);
 }
 
 button:active, input[type="submit"]:active {
@@ -63,7 +62,6 @@ main {
   align-items: center;
 }
 
-
 .messages {
   height: 85%;
   width: 100%;
@@ -71,7 +69,10 @@ main {
 }
 
 .add-comment {
-  padding: 5px 0;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 7px;
 }
 
 footer {
